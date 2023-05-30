@@ -1,0 +1,13 @@
+*#
+*~
+*.log
+.aux
+cache/
+*.tar
+*.html
+*.csv
+data/
+.Rhistory
+output/
+*.pdf
+*.sif

@@ -1,0 +1,19 @@
+---
+title: "Quarto"
+subtitle: ""
+format:
+  html:
+    toc: true
+    toc-location: left
+    highlight-style: atom-one
+    embed-resources: true
+    theme:
+      light: flatly
+      dark: darkly
+    code-overflow: wrap
+---
+
+# [Quarto workshop](https://www.youtube.com/watch?v=yvi5uXQMvu4) notes
+
+* Built on **Pandoc**
+

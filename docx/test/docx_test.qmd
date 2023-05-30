@@ -1,0 +1,456 @@
+---
+# Title, abstract, author
+title: "Title"
+subtitle: "Subtitle"
+date: "01/01/2001"
+author: "Authors Name, Otherauthors Name, Lastauthors Name"
+# abstract-title:
+# abstract:
+# affiliation: 
+# REFERENCES
+# Bibliography
+# bibliography: resources/references.bib
+# biblio-title:
+# biblio-style: 
+# biblatexoptions: 
+citations-hover: false
+cite-method: biblatex
+# citecolor: 
+#citation: #citation information for the document itself
+format:
+  # DOCX options
+  docx:
+    reference-doc: "aims_reference_doc.docx"
+    highlight-style: tango
+    toc: true
+    toc-depth: 2
+    toc-title: "Table of contents title"
+    number-sections: false
+    #number-depth: 1
+    #number-offset: 0
+    lang: en-AU
+    # Figures:
+    #fig-align: 
+    #fig-width:  # default width
+    #fig-height: # default height
+    fig-format: png
+    #fig-dpi:
+    #fig-asp: # aspect ratio
+    # Tables
+    #tbl-colwidths:
+    #df-print: # default (S3 method); kable (default); tibble; paged
+    link-citations:  false # true -> citations hypoerlinked to the bib entries
+    link-bibliography: true # true ->  PMCIDs, PMID, and URLs rendered as hyperlinks
+    #resource-path:  # List of paths to search for images and other resources
+# Cross-referencing styles
+crossref: 
+  fig-title: "**Figure**"
+  fig-labels: arabic
+  tbl-title: '**Table**'
+  tbl-labels: arabic
+---
+
+
+# Setup
+
+```{r setupHidden, echo=FALSE}
+# We often want to have some HIDDEN setup code, such as:
+
+# 1. Code chunk options
+knitr::opts_chunk$set(eval=TRUE, fig.width = 5, fig.height = 3, message=FALSE, warning=FALSE)
+
+# 2. Default ggplot theme
+my_gg_theme <- ggplot2::theme_classic() + 
+  theme(
+    # Render axis titles with markdown formatting
+    plot.title = ggtext::element_markdown(),
+    axis.title.x = ggtext::element_markdown(),
+    axis.title.y = ggtext::element_markdown(), 
+    axis.text = ggtext::element_markdown()
+  )
+ggplot2::theme_set(my_gg_theme)
+```
+
+```{r setupVisible}
+# We often want to have some VISIBLE setup code, such as:
+
+# Importing R packages
+library(tidyverse)
+library(ggtext)
+library(patchwork)
+```
+
+
+
+# Headings & basic text {#sec-headings}
+
+Normal body text (the above heading is Heading 1).
+
+## Heading 2
+
+**Bold body text**.
+
+### Heading 3 
+
+*Italicised body text*.
+
+
+#### Heading 4 
+
+**_Bold and italicised body text_**.
+
+
+##### Heading 5
+
+Normal body text with `inline code text`.
+
+
+###### Heading 6
+
+Normal body text with a reference to the "Headings section": @sec-headings.
+
+####### Heading 7
+
+######## Heading 8
+
+######### Heading 9
+
+########## Heading 10
+
+# Lists
+
+Here is an ordered list using numbers
+
+1. item 1
+2. item 2
+3. item 3
+
+... using roman numerals
+
+i. item 1
+ii. item 2
+iii. item 3
+
+... using letters
+
+a. item 1
+b. item 2
+c. item 3
+
+... using combinations (single tab indent)
+
+1. item 1
+  a. item 1a
+  b. item 1b
+2. item 2
+  i. item 2i
+  ii. item 2ii
+3. item 3
+  - unordered item
+  - another 
+
+... and again using double tab indents
+
+1. item 1
+    a. item 1a
+    b. item 1b
+2. item 2
+    i. item 2i
+    ii. item 2ii
+3. item 3
+    - unordered item
+    - another 
+
+Here is an unordered list using bullets with no seperating line breaks
+
+* item 1
+* item 2
+* item 3
+
+... seperated by line breaks: 
+
+* item 1
+
+* item 2
+
+* item 3
+
+... with dashes 
+
+- item 1
+- item 2
+- item 3
+
+... again but all indented by a tab
+
+  - item 1
+  - item 2
+  - item 3
+
+
+
+Here is an ordered list nested within an unordered list
+
+* item 1
+  1. item 1.1
+  2. item 1.2
+* item 2
+
+* item 3 (seperated by line break)
+
+... and vice versa 
+
+1. item 1
+  - item 1.1
+2. item 2
+  - item 2.1
+  - item 2.2
+3. item 3
+
+and again but seperated by line breaks
+
+1. item 1
+
+  - item 1.1
+
+2. item 2
+
+  - item 2.1
+
+  - item 2.2
+
+3. item 3
+
+and again with nested lists indented by two tabs
+
+1. item 1
+    - item 1.1
+2. item 2
+    - item 2.1
+    - item 2.2
+3. item 3
+
+
+Heres a larger list with text over multiple lines
+
+1. item 1 - item 1 is blah blahs sldlfnjskl dsjks ewhkdwend ewdew newjdwekd  dwjdknw dwdknw dwidjio3f nwejklfdw jlewfn fjkenwefk ejnkefdn ewdjkn wednkwe. ewndjk dewdjkn ewdniufdh ejwk jdbf kd dskb wn e e djf. 
+
+2. item 2 - item 1 is blah blahs sldlfnjskl dsjks ewhkdwend ewdew newjdwekd  dwjdknw dwdknw dwidjio3f nwejklfdw jlewfn fjkenwefk ejnkefdn ewdjkn wednkwe. ewndjk dewdjkn ewdniufdh ejwk jdbf kd dskb wn e e djf. nw dwdknw dwidjio3f nwejklfdw jlewfn fjkenwefk ejnkefdn ewdjkn wednkwe. ewndjk dewdjkn ewdniufdh ejwk jdbf kd dskb wn e e djf.
+
+3. item 3 - each item is indented by:
+
+* no tabs
+
+  * 1 tab 
+
+    * 2 tabs
+
+      * 3 tabs
+
+        * 4 tabs
+
+          * 5 tabs
+          
+            * 6
+
+              * 7
+
+                * 8
+
+
+# Equations
+
+Normal body text with an inline equation $\alpha_i = x_{i+1} + y_i  \implies \mu \sim f(e^\Omega, 1000)$ with text etiher side.
+
+Below is an equation block. 
+
+Cross ref to equation block before equation: @eq-block
+
+$$
+\begin{align*}
+\text{If } x_n &= 1 \;,\\
+\text{then } y &> \frac{\alpha_{n-1}}{\beta_n}\;.
+\end{align*}
+$$ {#eq-block}
+
+
+Cross ref to equation block after equation: @eq-block
+
+
+# Tables
+
+The below is a simple table which is never cross-referenced. 
+
+```{r echo=FALSE}
+#| label: tbl-default1
+#| tbl-cap: Table caption text (never cross-referenced; kable). 
+table_default <- mtcars |> 
+  dplyr::filter(mpg >= 30) |> 
+  pull(mpg) |>
+  table() |>
+  knitr::kable(col.names = c("mpg", "freq."))
+table_default
+```
+
+
+We'll print the same table again and cross reference it 
+
+1. before it is create: @tbl-default2
+
+```{r echo=FALSE}
+#| label: tbl-default2
+#| tbl-cap: Table caption text (cross-referenced; kable). 
+table_default
+```
+
+
+2. after it is created: @tbl-default2
+
+
+# Figures
+
+The below is a simple figure which is never cross-referenced. 
+
+```{r echo=FALSE}
+#| label: fig-default1
+#| fig-cap: Figure caption text (never cross-referenced). 
+a <- mtcars |> 
+  ggplot(aes(x=mpg)) +
+  geom_histogram(bins = 10)
+b <- mtcars |>  
+  ggplot(aes(x = qsec, y = mpg)) + 
+  geom_point() + 
+  labs(x = "Quarter mile time (*qsec*)", y = "Miles per gallon (*mpg*)")
+plot_default <- a + b
+plot_default
+```
+
+
+We'll print the same figure again and cross reference it 
+
+1. before it is created: @fig-default2
+
+```{r echo=FALSE}
+#| label: fig-default2
+#| fig-cap: Table caption text (cross-referenced). 
+plot_default
+```
+
+
+2. after it is created: @fig-default2
+
+
+
+# Panels
+
+## Tabset
+
+
+::::{.panel-tabset}
+
+### Text in tabs
+
+:::{.panel-tabset}
+
+#### Text tab 1
+
+Here is some text in a tab.
+
+#### Text tab 2
+
+Here is some text in another tab. 
+
+:::
+
+### Tables in tabs
+
+:::{.panel-tabset}
+
+#### Not cross-ref'ed
+
+Here is a table in a tab which is never cross referenced. 
+
+```{r echo=FALSE}
+#| label: tbl-TabTable1
+#| tbl-cap: Table caption text (never cross-referenced; kable). 
+table_default
+```
+
+
+#### Cross-ref'ed
+
+Here is a table which is cross referenced 
+
+1. before it is created: @tbl-TabTable2
+
+```{r echo=FALSE}
+#| label: tbl-TabTable2
+#| tbl-cap: Table caption text (cross-referenced; kable). 
+table_default
+```
+
+2. after it is created: @tbl-TabTable2
+
+:::
+
+### Figures in tabs
+
+:::{.panel-tabset}
+
+#### Never cross-ref'ed
+
+The below is a simple figure which is never cross-referenced. 
+
+```{r echo=FALSE}
+#| label: fig-TabFig1
+#| fig-cap: Figure caption text (never cross-referenced). 
+plot_default
+```
+
+
+#### Cross-ref'ed
+
+Heres a figure which is cross-referenced:
+
+1. before it is created: @fig-TabFig2
+
+```{r echo=FALSE}
+#| label: fig-TabFig2
+#| fig-cap: Table caption text (cross-referenced). 
+plot_default
+```
+
+
+2. after it is created: @fig-TabFig2
+
+
+:::
+
+::::
+
+
+## Column layout
+
+::::{.columns}
+
+:::{.column width="48%"}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+:::
+
+:::{.column width="4%"}
+<!-- Spacing column -->
+:::
+
+:::{.column width="48%"}
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+:::
+::::
+
+
+
+# Other
+
+
+
